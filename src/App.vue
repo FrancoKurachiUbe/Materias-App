@@ -1,28 +1,76 @@
+
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/Ingresar-Materias">ingresar Materias</router-link>
+    </div>
+
+  <v-app>
+    <v-navigation-drawer
+      v-model="drawer"
+        app >
+      <v-list>
+        <v-list-item links 
+          v-for="item in items"
+          :key="item.titulo"
+          :to="item.path">
+          <v-list-item-action>
+            <v-icon class="secondary--text">mdi-{{item.icono }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title class="secondary--text"> {{ item.titulo }}</v-list-item-title>
+            
+          </v-list-item-content>
+          
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar class="primary" app>
+     <v-app-bar-nav-icon class="white--text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title class="white--text">Materias</v-toolbar-title>
+    </v-app-bar>
+    <v-main>
+      <v-container fluid>
+        
+      
+         <transition mode="out-in" enter-active-class="animate__animated animate__fadeInLeft">
+          <router-view></router-view>
+        </transition>
+
+      </v-container>
+
+    </v-main> 
+    
+  </v-app>
+
+    <router-view/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data: () => ({
+    items: [
+      {
+        titulo:'Home',
+        icono:'home',
+        path:'/'
+      },
+      {
+        titulo:'Ingresar',
+        icono:'format-list-checkbox',
+        path:'/Ingresar-Materias'
+      },
+      {
+        titulo:'Ver',
+        icono:'format-list-checkbox',
+        path:'/Ver-Materias'
+      }
+    ],
+    drawer:null,
+  })
 }
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+</script>
