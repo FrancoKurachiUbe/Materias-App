@@ -21,7 +21,7 @@
   <v-form
     ref="form">
     <v-text-field v-model="form_data.titulo" label="Titulo"  counter="10"></v-text-field>
-    <v-text-field v-model="form_data.tareas" label="tareas"  counter="10"></v-text-field>
+    <!-- <v-text-field v-model="form_data.tareas" label="tareas"  counter="10"></v-text-field> -->
 
     <v-btn
             color="primary"
@@ -41,7 +41,8 @@ export default {
       form_data:{
         titulo:"",
         tareas:[],
-        fecha:""
+        fecha:"",
+        id:null,
       },
       arr:[]
     }
@@ -49,16 +50,20 @@ export default {
   methods:{
     guardar:function(form_data){
       form_data = Object.assign({}, form_data, { fecha: new Date().getTime() })
-    console.log(form_data)
+      //console.log(form_data.id)
 
     if(!localStorage.form){
       this.arr=[]
     }else{
       this.arr=JSON.parse(localStorage.getItem("form"))
       }
-
-  //arr.push(nuevoObj)
+  
+  var id = this.arr.length
+  form_data.id = id
+  console.log(form_data.id)
+  
   this.arr.push(form_data)
+  console.log(this.arr)
   localStorage.setItem("form",JSON.stringify(this.arr))
   //this.$router.push('/fav');
     }

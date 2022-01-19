@@ -3,9 +3,9 @@
     <v-expansion-panels inset>
       <v-expansion-panel
         v-for="item in local"
-        :key="item.titulo"
+        :key="item.id"
       >
-        <v-expansion-panel-header>{{item.tareas}}</v-expansion-panel-header>
+        <v-expansion-panel-header>{{item.titulo}}</v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-card
           class="mx-auto"
@@ -39,27 +39,49 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr
-                          v-for=" ite in item.tareas"
-                          :key="ite.titulo"
+                        <tr v-for="tareas in arr"
+                        :key="tareas.fecha"
                         >
-                          <td>{{ ite.tarea }}</td>
+                          <td>{{tareas.tareas}}</td>
+                          <td>{{tareas.id}}</td>
                           <!-- <td>{{ item.tareas }}</td> -->
                         </tr>
                       </tbody>
                     </template>
                   </v-simple-table>
+                  <v-form
+                    ref="form">
+                    <v-text-field :key="item.fecha" v-model="form_tareas.tareas" label="tareas"  counter="10"></v-text-field>
+
+                      <v-select
+                        v-model="form_tareas.id"
+                        :items= "item.id"
+                        label="Select"
+                        data-vv-name="select"
+                        required
+                      ></v-select>
+                    <v-btn
+                            color="primary"
+                            text
+                            @click="guardar(form_tareas)">
+                            Guardar
+                    </v-btn>
+                    
+                    </v-form>
               </v-list-item-content>
 
               <v-list-item-avatar
                 tile
                 size="80"
-              ><v-img
-  lazy-src="https://picsum.photos/id/11/10/6"
-  max-height="150"
-  max-width="250"
-  src="https://picsum.photos/id/11/500/300"
-></v-img></v-list-item-avatar>
+                >
+                <v-img
+                  lazy-src="https://picsum.photos/id/11/10/6"
+                  max-height="150"
+                  max-width="250"
+                  src="https://picsum.photos/id/11/500/300"
+                  >
+                </v-img>
+              </v-list-item-avatar>
             </v-list-item>
 
             <v-card-actions>
@@ -80,33 +102,16 @@
 
 <script>
   export default {
-    /* data: () => ({
-      cards: [
-        { title: 'Matematicas', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg',
-          tareas: [],
-        },
-        { title: 'Filosofia', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg',
-          tareas: [
-            {nombre: "ejercicio 2"}
-          ],
-        },
-        { title: 'Lengua', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg',
-          tareas: [
-            {nombre: "ejercicio 2"}
-          ],
-        },
-      ],
-      items: [
-        { title: 'Pre-fab homes', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 12 },
-        { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
-        { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
-      ],
-    }), */
     data:function(){
       return {
+        form_tareas: {
+          tareas:"",
+          fecha:""
+        },
+        arr:[],
         local:[],
         sin_datos: "",
-        //tareas:[]
+        tareas:[]
       }
     },
     mounted:function(){
@@ -114,20 +119,41 @@
       this.ver_local();
     },
     methods:{
+      guardar:function(form_tareas){
+      form_tareas = Object.assign({}, form_tareas, { fecha: new Date().getTime() })
+      console.log(form_tareas)
+
+      this.local=JSON.parse(localStorage.getItem("form"))
+      var id = form_tareas.id
+      var tarea = this.local[id].tareas
+      console.log(tarea)
+      tarea.push(form_tareas)
+      console.log(tarea)
+      localStorage.setItem("form",JSON.stringify(this.local))
+
+
+        /* if(!localStorage.tarea){
+          this.arr=[]
+        }else{
+          this.arr=JSON.parse(localStorage.getItem("tarea"))
+          }
+        console.log(this.local)
+        console.log(form_tareas.id) */
+
+        /* this.arr.push(form_tareas)
+        localStorage.setItem("tarea",JSON.stringify(this.arr))
+        console.log(this.arr) */
+
+      },
       ver_local:function(){
     
         if(localStorage.form){
         this.local=JSON.parse(localStorage.getItem("form")) 
-        //tarea = local.titulo
+        //console.log(this.local[1].titulo)
+        console.log(this.local[0].tareas)
+        console.log()
         
-        }
-        for(var i = 0;i < 9 ; i++){
-          let tareas = this.local[i].tareas
-          console.log(tareas)
-        }
 
-        if(this.local.length == 0){
-          this.sin_datos ="Es hora de cargar datos !!"
         }
       }
     }
