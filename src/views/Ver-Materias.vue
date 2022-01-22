@@ -1,161 +1,138 @@
 <template>
-  <v-row justify="center">
-    <v-expansion-panels inset>
-      <v-expansion-panel
-        v-for="item in local"
-        :key="item.id"
-      >
-        <v-expansion-panel-header>{{item.titulo}}</v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <v-card
-          class="mx-auto"
-          outlined
-          >
-            <!-- <v-card-title>Tarea</v-card-title> -->
-              <!-- <v-card-subtitle>
-                <v-card-text>
-                  <v-card-actions>
-                    <v-card-actions>
-                <v-card-text>
-              <v-card-subtitle> -->
+  <!-- <v-simple-table 
+    class="elevation-1">
+    <template v-slot:default>
+      <v-card>
+            <v-card-title>
+              <span class="text-h5">Administrar Materias</span>
+            </v-card-title>
+      </v-card>
+      <v-card-text>
+        <v-container>
+          <v-row>
+            <v-col cols="12" sm="6" md="5">
+              Materias
+            </v-col>
+            <v-col cols="12" sm="2" md="3">
+              Notas
+            </v-col>
+            <v-col cols="12" sm="2" md="2">
+              Promedio
+            </v-col>
+            <v-col cols="12" sm="2" md="2">
+              Editar/Borar
+            </v-col>
+          </v-row>
+        </v-container>
+        </v-card-text> 
+        <v-card-text v-for="item in local" :key="item.id">
+        <v-container>
+          <v-row>
+            <v-col  cols="12" sm="6" md="5">
+              {{item.titulo}}
+            </v-col>
+            <v-col cols="12" sm="2" md="3">
+              Notas
+            </v-col>
+            <v-col cols="12" sm="2" md="2">
+              Promedio
+            </v-col>
+            <v-col cols="12" sm="2" md="2">
+              <v-btn fab dark x-small class="primary mr-2">
+              <v-icon>
+                mdi-pencil
+              </v-icon>
+            </v-btn>
             
+            <v-btn fab dark x-small class="red mr-2">
+              <v-icon>
+                mdi-delete
+              </v-icon>
+            </v-btn>
+            </v-col>
+          </v-row>
+          
+        </v-container>
+        </v-card-text>
+    </template>
+  </v-simple-table> -->
 
-            <v-list-item three-line>
-              <v-list-item-content>
-                
-                <v-list-item-title class="text-h5 mb-2">
-                  Tareas
-                </v-list-item-title>
-                  <v-simple-table>
-                    <template v-slot:default>
-                      <thead>
-                        <tr>
-                          <th class="text-left">
-                            Name
-                          </th>
-                          <th class="text-left">
-                            Calories
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="tareas in arr"
-                        :key="tareas.fecha"
-                        >
-                          <td>{{tareas.tareas}}</td>
-                          <td>{{tareas.id}}</td>
-                          <!-- <td>{{ item.tareas }}</td> -->
-                        </tr>
-                      </tbody>
-                    </template>
-                  </v-simple-table>
-                  <v-form
-                    ref="form">
-                    <v-text-field :key="item.fecha" v-model="form_tareas.tareas" label="tareas"  counter="10"></v-text-field>
-
-                      <v-select
-                        v-model="form_tareas.id"
-                        :items= "item.id"
-                        label="Select"
-                        data-vv-name="select"
-                        required
-                      ></v-select>
-                    <v-btn
-                            color="primary"
-                            text
-                            @click="guardar(form_tareas)">
-                            Guardar
-                    </v-btn>
-                    
-                    </v-form>
-              </v-list-item-content>
-
-              <v-list-item-avatar
-                tile
-                size="80"
-                >
-                <v-img
-                  lazy-src="https://picsum.photos/id/11/10/6"
-                  max-height="150"
-                  max-width="250"
-                  src="https://picsum.photos/id/11/500/300"
-                  >
-                </v-img>
-              </v-list-item-avatar>
-            </v-list-item>
-
-            <v-card-actions>
-              <v-btn
-                outlined
-                rounded
-                text
-              >
-                Button
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
-  </v-row>
+<v-container>
+<v-simple-table dense>
+    <template v-slot:default>
+      <thead>
+        <tr>
+          <th class="text-center">
+            ID
+          </th>
+          <th class="text-center">
+            Materia
+          </th>
+          <th class="text-center">
+            Notas
+          </th>
+          <th class="text-center">
+            Promedio
+          </th>
+          <th class="text-center">
+            Editar / Borrar
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in local" :key="item.id">
+          <td class="text-center">{{ item.id }}</td>
+          <td class="text-center primary--text">{{ item.titulo }}</td>
+          <td class="text-center">{{ item.id }}</td>
+          <td class="text-center">{{ item.id }}</td>
+          <td class="text-center">
+            <v-btn fab dark x-small class="edit mr-1">
+              <v-icon>
+                mdi-pencil
+              </v-icon>
+            </v-btn>
+            <v-btn fab dark x-small class="red">
+              <v-icon>mdi-delete</v-icon>
+            </v-btn>
+          </td>
+          <!-- <td>{{ item. }}</td> -->
+        </tr>
+      </tbody>
+       
+  
+    </template>
+  </v-simple-table> 
+  </v-container>
 </template>
 
 <script>
-  export default {
-    data:function(){
+   export default{
+      name: "Ver-Materias",
+
+      data:function(){
       return {
-        form_tareas: {
-          tareas:"",
-          fecha:""
-        },
-        arr:[],
         local:[],
-        sin_datos: "",
-        tareas:[]
+        sin_datos: ""
       }
-    },
+  },
+
     mounted:function(){
-      console.log("se monto")
-      this.ver_local();
-    },
-    methods:{
-      guardar:function(form_tareas){
-      form_tareas = Object.assign({}, form_tareas, { fecha: new Date().getTime() })
-      console.log(form_tareas)
+    console.log("se monto")
+    this.ver_local();
+  },
 
-      this.local=JSON.parse(localStorage.getItem("form"))
-      var id = form_tareas.id
-      var tarea = this.local[id].tareas
-      console.log(tarea)
-      tarea.push(form_tareas)
-      console.log(tarea)
-      localStorage.setItem("form",JSON.stringify(this.local))
-
-
-        /* if(!localStorage.tarea){
-          this.arr=[]
-        }else{
-          this.arr=JSON.parse(localStorage.getItem("tarea"))
-          }
-        console.log(this.local)
-        console.log(form_tareas.id) */
-
-        /* this.arr.push(form_tareas)
-        localStorage.setItem("tarea",JSON.stringify(this.arr))
-        console.log(this.arr) */
-
-      },
-      ver_local:function(){
-    
-        if(localStorage.form){
-        this.local=JSON.parse(localStorage.getItem("form")) 
-        //console.log(this.local[1].titulo)
-        console.log(this.local[0].tareas)
-        console.log()
-        
-
-        }
+  
+  methods:{
+    ver_local:function(){  
+      if(localStorage.form){
+      this.local=JSON.parse(localStorage.getItem("form")) 
+          console.log(this.local)
       }
+      /* if(this.local.length == 0){
+        this.sin_datos ="Es hora de cargar datos !!"
+      } */
     }
+
+  }
 }
 </script>

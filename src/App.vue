@@ -64,7 +64,12 @@ export default {
         path:'/Ingresar-Materias'
       },
       {
-        titulo:'Ver',
+        titulo:'Tareas',
+        icono:'format-list-checkbox',
+        path:'/Tareas'
+      },
+      {
+        titulo:'Materias',
         icono:'format-list-checkbox',
         path:'/Ver-Materias'
       }
