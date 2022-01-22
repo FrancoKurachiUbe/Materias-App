@@ -1,9 +1,25 @@
 /* c:\xampp\htdocs\www\trabajos\VUE-Viutify(Materias)\materias-vue */
 /* 
+Home
+    * Hacer el Home.
+
+Ingresar-Materia
+    * Agregar Imagen de la materia.
+
+Ingresar-Tareas
+    * Las Tareas solo de muestran cuando se apreta Guardar.
+    * Agregar la Imagen de la MATERIA.
+
+Ver-Materias
+    * Generar la Logica de el Promedio de las materias.    
+    * Agregar al LocalStorage las Notas Ingresadas.
+    * Terminar el Formulario para ingresar las materias junto con el seleccionador.
+    * Generar function Editar.
+    * Generar function Borrar.
+    
 Footer
-Agregar un color
-Agregar una Imagen
-Agregar Colores de Seleccion
+    * Icono de GitHub
+
 */
 import Vue from 'vue'
 import VueRouter from 'vue-router'

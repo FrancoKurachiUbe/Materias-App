@@ -1,31 +1,15 @@
 <template>
+<v-container>
   <v-row justify="center">
-    <v-expansion-panels inset>
-      <v-expansion-panel class="primary white--text"
-        v-for="item in local"
-        :key="item.id"
-      >
+    
+    <v-expansion-panels inset v-for="item in local" :key="item.id">
+      <v-expansion-panel v-bind:class="item.color" class="white--text mb-3">
         <v-expansion-panel-header>{{item.titulo}}</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <v-card
-          class="mx-auto"
-          outlined
-          >
-            <!-- <v-card-title>Tarea</v-card-title> -->
-              <!-- <v-card-subtitle>
-                <v-card-text>
-                  <v-card-actions>
-                    <v-card-actions>
-                <v-card-text>
-              <v-card-subtitle> -->
-            
-
+          
+          <v-card class="mx-auto" outlined>
             <v-list-item three-line>
               <v-list-item-content>
-                
-                <!-- <v-list-item-title class="text-h5 mb-2">
-                  Tareas
-                </v-list-item-title> -->
                   <v-simple-table>
                     <template v-slot:default>
                       <thead>
@@ -33,9 +17,6 @@
                           <th class="text-left">
                             Tareas
                           </th>
-                          <!-- <th class="text-left">
-                            Calories
-                          </th> -->
                         </tr>
                       </thead>
                       <tbody>
@@ -52,21 +33,22 @@
                   </v-simple-table>
                   <v-form
                     ref="form">
-                    <v-text-field :key="item.fecha" v-model="form_tareas.tareas" label="tareas"  counter="10"></v-text-field>
+                    <v-text-field :key="item.fecha" v-model="form_tareas.tareas" label="Ingrese una tarea"  counter="10"></v-text-field>
 
                       <v-select
                         v-model="form_tareas.id"
                         :items= "item.id"
-                        label="Select"
+                        label="Seleccione el ID"
                         data-vv-name="select"
                         required
                       ></v-select>
-                    <v-btn
+                    <!-- <v-btn
                             color="primary"
                             text
                             @click="guardar(form_tareas)">
                             Guardar
-                    </v-btn>
+                    </v-btn> -->
+                    <v-btn color="succes" class="green white--text" text  @click="guardar(tareas)">Guardar</v-btn>
                     
                     </v-form>
               </v-list-item-content>
@@ -99,6 +81,7 @@
       </v-expansion-panel>
     </v-expansion-panels>
   </v-row>
+  </v-container>
 </template>
 
 <script>

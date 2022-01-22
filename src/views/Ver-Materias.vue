@@ -58,7 +58,7 @@
   </v-simple-table> -->
 
 <v-container>
-<v-simple-table dense>
+<v-simple-table dense class="mb-10">
     <template v-slot:default>
       <thead>
         <tr>
@@ -81,10 +81,10 @@
       </thead>
       <tbody>
         <tr v-for="item in local" :key="item.id">
-          <td class="text-center">{{ item.id }}</td>
-          <td class="text-center primary--text">{{ item.titulo }}</td>
-          <td class="text-center">{{ item.id }}</td>
-          <td class="text-center">{{ item.id }}</td>
+          <td :class="item.color" class="text-center white--text">{{ item.id }}</td>
+          <td :class="item.textColor" class="text-center">{{ item.titulo }}</td>
+          <td :class="item.textColor" class="text-center">{{ item.id }}</td>
+          <td :class="item.textColor" class="text-center">{{ item.id }}</td>
           <td class="text-center">
             <v-btn fab dark x-small class="edit mr-1">
               <v-icon>
@@ -101,8 +101,25 @@
        
   
     </template>
-  </v-simple-table> 
-  </v-container>
+  </v-simple-table>
+
+
+  <template class="mt-4">
+  <v-expansion-panels>
+    <v-expansion-panel
+      v-for="(item,i) in 1"
+      :key="i"
+    >
+      <v-expansion-panel-header>
+        Ingresar Notas
+      </v-expansion-panel-header>
+      <v-expansion-panel-content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-expansion-panels>
+</template>
+</v-container>
 </template>
 
 <script>
@@ -128,6 +145,15 @@
       this.local=JSON.parse(localStorage.getItem("form")) 
           console.log(this.local)
       }
+      //console.log(this.local.length)
+      /* var cantidad = this.local.length
+      for(var i=0; i < cantidad; i++){
+        var color = this.local[i].color 
+        color +="--text"
+        console.log(color)
+      } */
+      
+      
       /* if(this.local.length == 0){
         this.sin_datos ="Es hora de cargar datos !!"
       } */

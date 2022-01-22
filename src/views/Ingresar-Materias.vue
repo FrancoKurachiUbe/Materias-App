@@ -1,36 +1,13 @@
 <template>
-  <!-- <v-form
-    ref="form"
-  >
-    <v-text-field
-      :counter="10"
-      :rules="nameRules"
-      label="Name"
-      required
-      v-model="form_data.titulo"
-    ></v-text-field>
+  <v-container>
+    <v-form ref="form">
+      <v-text-field v-model="form_data.titulo" label="Ingrese el Nombre de la Materia"  counter="10"></v-text-field>
+      <v-select v-model="form_data.color" label="Seleccione un color" data-vv-name="select" required :items="colors">
 
-    <v-btn
-      :disabled="!valid"
-      color="success"
-      class="mr-4"
-      @click="guardar(form_data)">
-      Enviar
-    </v-btn>
-  </v-form> -->
-  <v-form
-    ref="form">
-    <v-text-field v-model="form_data.titulo" label="Titulo"  counter="10"></v-text-field>
-    <!-- <v-text-field v-model="form_data.tareas" label="tareas"  counter="10"></v-text-field> -->
-
-    <v-btn
-            color="primary"
-            text
-            @click="guardar(form_data)">
-            Guardar
-          </v-btn>
-    
+      </v-select>
+      <v-btn color="succes" class="green white--text" text  @click="guardar(form_data)">Guardar</v-btn>
     </v-form>
+  </v-container>
 </template>
 
 <script>
@@ -40,11 +17,14 @@ export default {
     return {
       form_data:{
         titulo:"",
-        tareas:[],
         fecha:"",
+        tareas:[],
+        color:[],
+        textColor:"",
         id:null,
       },
-      arr:[]
+      arr:[],
+      colors:["indigo", "purpura","rojo","azul","ambar","marron"]
     }
   },
   methods:{
@@ -61,7 +41,24 @@ export default {
   var id = this.arr.length
   form_data.id = id
   console.log(form_data.id)
-  
+
+  console.log(form_data.color)
+  //console.log(arr.color)
+  var color = form_data.color
+  color += "--text" 
+  form_data.textColor= color
+  //form_data.textColor.push(color)
+  console.log(form_data)
+  /* textColor.push(form_data.color)
+  console.log(textColor) */
+
+  /* var cantidad = this.arr.length
+      for(var i=0; i < cantidad; i++){
+        var color = this.arr[i].color 
+        color +="--text"
+        console.log(color)
+      } */
+
   this.arr.push(form_data)
   console.log(this.arr)
   localStorage.setItem("form",JSON.stringify(this.arr))
