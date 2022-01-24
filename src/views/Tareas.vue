@@ -21,12 +21,11 @@
                       </thead>
                       <tbody>
                         <tr v-for="tar in item.tareas"
-                        :key="tar.fecha"
+                        :key="tar.tareas"
                         
                         >
                           <td>{{tar.tareas}}</td>
-                          <!-- <td>{{tar.id}}</td> -->
-                          <!-- <td>{{ item.tareas }}</td> -->
+                          
                         </tr>
                       </tbody>
                     </template>
@@ -48,7 +47,7 @@
                             @click="guardar(form_tareas)">
                             Guardar
                     </v-btn> -->
-                    <v-btn color="succes" class="green white--text" text  @click="guardar(tareas)">Guardar</v-btn>
+                    <v-btn color="succes" class="green white--text" text  @click="guardar(form_tareas)">Guardar</v-btn>
                     
                     </v-form>
               </v-list-item-content>
@@ -66,16 +65,6 @@
                 </v-img>
               </v-list-item-avatar>
             </v-list-item>
-
-            <!-- <v-card-actions>
-              <v-btn
-                outlined
-                rounded
-                text
-              >
-                Button
-              </v-btn>
-            </v-card-actions> -->
           </v-card>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -123,8 +112,6 @@
         //console.log(this.local[1].titulo)
         console.log(this.local[0].tareas)
         console.log()
-        
-
         }
       }
     }

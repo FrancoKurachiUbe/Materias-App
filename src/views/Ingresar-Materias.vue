@@ -1,9 +1,9 @@
 <template>
   <v-container>
     <v-form ref="form">
-      <v-text-field v-model="form_data.titulo" label="Ingrese el Nombre de la Materia"  counter="10"></v-text-field>
+      <v-text-field v-model="form_data.titulo" label="Ingrese el Nombre de la Materia"  counter="10">
+      </v-text-field>
       <v-select v-model="form_data.color" label="Seleccione un color" data-vv-name="select" required :items="colors">
-
       </v-select>
       <v-btn color="succes" class="green white--text" text  @click="guardar(form_data)">Guardar</v-btn>
     </v-form>
@@ -19,6 +19,7 @@ export default {
         titulo:"",
         fecha:"",
         tareas:[],
+        notas:[],
         color:[],
         textColor:"",
         id:null,

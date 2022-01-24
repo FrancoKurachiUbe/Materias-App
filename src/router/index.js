@@ -1,5 +1,10 @@
 /* c:\xampp\htdocs\www\trabajos\VUE-Viutify(Materias)\materias-vue */
 /* 
+
+- General 
+    * Hacer que cada materia empieze con mayuscula.
+    * Cambiar los colores de las materias.
+
 Home
     * Hacer el Home.
 
@@ -7,13 +12,11 @@ Ingresar-Materia
     * Agregar Imagen de la materia.
 
 Ingresar-Tareas
-    * Las Tareas solo de muestran cuando se apreta Guardar.
     * Agregar la Imagen de la MATERIA.
 
 Ver-Materias
-    * Generar la Logica de el Promedio de las materias.    
-    * Agregar al LocalStorage las Notas Ingresadas.
-    * Terminar el Formulario para ingresar las materias junto con el seleccionador.
+    * Agregar la Imagen de la MATERIA.
+
     * Generar function Editar.
     * Generar function Borrar.
     
