@@ -3,18 +3,43 @@
   <v-row justify="center">
     <v-expansion-panels inset v-for="item in local" :key="item.id">
       <v-expansion-panel v-bind:class="item.color" class="white--text mb-3">
-        <v-expansion-panel-header>{{item.id}}. {{item.titulo}}</v-expansion-panel-header>
+        <v-expansion-panel-header class="text-capitalize">{{item.id}}. {{item.titulo}}</v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-card class="mx-auto" outlined>
             <v-list-item three-line>
               <v-list-item-content>
-                  <v-simple-table>
+                  <!-- <v-simple-table>
                     <template v-slot:default>
                       <thead>
-                        <tr>
-                          <th class="text-left">Tareas</th>
-                          <th class="text-left">Borrar</th>
-                        </tr>
+                        <tr> -->
+                        <v-container>
+                          <v-row>
+                            <v-col cols="12" sm="10" md="10">
+                              <th class="text-left">Tareas</th>
+                            </v-col>
+                            <v-col cols="12" sm="2" md="2">
+                              <th class="text-left">Botones</th>
+                            </v-col>
+                          </v-row>
+                        </v-container>
+                        <v-container>
+                          <v-row v-for="tar in item.tareas" :key="tar.fecha">
+                            <v-col :class="tar.css" cols="12" sm="10" md="10">
+                              <td class="text-left">{{tar.tareas}}</td>
+                            </v-col>
+                            <v-col :class="tar.css" cols="12" sm="2" md="2">
+                              <td class="text-left">
+                                <v-btn @click="checkItem(tar)" fab dark small class="green mr-3">
+                                  <v-icon>mdi-check-circle</v-icon>
+                                </v-btn>
+                                <v-btn @click="deleteItem(tar)" fab dark small class="red">
+                                  <v-icon>mdi-delete</v-icon>
+                                </v-btn>
+                              </td>
+                            </v-col>
+                          </v-row>
+                        </v-container>
+                        <!-- </tr>
                       </thead>
                       <tbody>
                         <tr v-for="tar in item.tareas" :key="tar.tareas">
@@ -23,20 +48,14 @@
                         </tr>
                       </tbody>
                     </template>
-                  </v-simple-table>
+                  </v-simple-table> -->
                   <v-form
                     ref="form">
                     <v-text-field :key="item.fecha" v-model="form_tareas.tareas" label="Ingrese una tarea"  counter="10"></v-text-field>
-
-                      <v-select
-                        v-model="form_tareas.id"
-                        :items= "items"
-                        label="Seleccione el ID"
-                        data-vv-name="select"
-                        required
-                      ></v-select>
+                    <v-select
+                      v-model="form_tareas.id" :items= "item.id" label="Seleccione el ID" data-vv-name="select" required
+                    ></v-select>
                     <v-btn color="succes" class="green white--text" text  @click="guardar(form_tareas)">Guardar</v-btn>
-                    
                     </v-form>
               </v-list-item-content>
             </v-list-item>
@@ -54,13 +73,16 @@
       return {
         form_tareas: {
           tareas:"",
-          fecha:""
+          fecha:"",
+          css:"",
         },
-        arr:[],
+        //singleSelect:false,
+        //arr:[],
+        
         local:[],
         items:[],
         sin_datos: "",
-        tareas:[]
+        //tareas:[]
       }
     },
     mounted:function(){
@@ -80,6 +102,23 @@
       console.log(tarea)
       localStorage.setItem("form",JSON.stringify(this.local))
 
+      },
+      //Borrar Item de Tareas
+      deleteItem(tar) {
+        this.local[tar.id].tareas.splice(this.editedIndex, 1)
+        localStorage.setItem("form",JSON.stringify(this.local))
+      },
+      checkItem(tar){
+        console.log(tar)
+          if(tar.css == "green white--text"){
+            tar.css = ""
+          }else {
+            tar.css = "green white--text"
+          }
+          
+        
+       console.log(tar)
+       localStorage.setItem("form",JSON.stringify(this.local))
       },
       ver_local:function(){
     

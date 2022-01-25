@@ -1,19 +1,7 @@
 /* c:\xampp\htdocs\www\trabajos\VUE-Viutify(Materias)\materias-vue */
 /* 
-
 - General:
-
-Home
-    * Hacer el Home.
-
-Tareas
-    * Agregar el tilde de terminada la tarea.
-    * Agregar Borrar Tarea.
-
-Materias
     
-
-
 */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
