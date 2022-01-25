@@ -20,12 +20,13 @@ export default {
         fecha:"",
         tareas:[],
         notas:[],
-        color:[],
+        color:"",
+        promedio:0,
         textColor:"",
         id:null,
       },
       arr:[],
-      colors:["indigo", "purpura","rojo","azul","ambar","marron"]
+      colors:["indigo", "purpura","rojo","azul","ambar","marron","verde"]
     }
   },
   methods:{

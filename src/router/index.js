@@ -1,27 +1,18 @@
 /* c:\xampp\htdocs\www\trabajos\VUE-Viutify(Materias)\materias-vue */
 /* 
 
-- General 
-    * Hacer que cada materia empieze con mayuscula.
-    * Cambiar los colores de las materias.
+- General:
 
 Home
     * Hacer el Home.
 
-Ingresar-Materia
-    * Agregar Imagen de la materia.
+Tareas
+    * Agregar el tilde de terminada la tarea.
+    * Agregar Borrar Tarea.
 
-Ingresar-Tareas
-    * Agregar la Imagen de la MATERIA.
-
-Ver-Materias
-    * Agregar la Imagen de la MATERIA.
-
-    * Generar function Editar.
-    * Generar function Borrar.
+Materias
     
-Footer
-    * Icono de GitHub
+
 
 */
 import Vue from 'vue'

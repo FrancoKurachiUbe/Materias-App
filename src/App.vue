@@ -40,9 +40,36 @@
       </v-main>
       <v-spacer></v-spacer>
         
-        <v-container fluid class="black white--text">
+        <!-- <v-container fluid class="black white--text">
           Footer
-        </v-container>
+        </v-container> -->
+              <template>
+                <v-footer dark padless>
+                  <v-card class="flex text-center" flat tile>
+                    <v-card-text class="">
+                      <v-btn href="https://www.linkedin.com/in/franco-kurachi-ub%C3%A9-325ab5205/" target="_blank" class="mr-1" dark icon>
+                        <v-icon size="30px">
+                           mdi-linkedin
+                        </v-icon>
+                      </v-btn>
+                      <v-btn href="https://github.com/FrancoKurachiUbe" target="_blank" class="ml-1" dark icon>
+                        <v-icon size="30px">
+                           mdi-github
+                        </v-icon>
+                      </v-btn>
+                      <v-btn href="https://francokurachiube.github.io/" target="_blank" class="ml-1" dark icon>
+                        <v-icon size="30px">
+                           mdi-web
+                        </v-icon>
+                      </v-btn>
+                    </v-card-text>
+
+                    <v-card-text class="py-1 white--text text-center">
+                      {{ new Date().getFullYear() }} — <strong>Escuela Davinci</strong>
+                    </v-card-text>
+                  </v-card>
+                </v-footer>
+              </template>
     </v-app>
   </div>
 </template>

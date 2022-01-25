@@ -21,6 +21,7 @@ export default new Vuetify({
             azul : colors.blue.base,
             ambar : colors.amber.base,
             marron : colors.brown.base,
+            verde : colors.green.base,
 
           },
         },

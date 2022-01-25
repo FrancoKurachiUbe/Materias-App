@@ -1,12 +1,10 @@
 <template>
 <v-container>
   <v-row justify="center">
-    
     <v-expansion-panels inset v-for="item in local" :key="item.id">
       <v-expansion-panel v-bind:class="item.color" class="white--text mb-3">
-        <v-expansion-panel-header>{{item.titulo}}</v-expansion-panel-header>
+        <v-expansion-panel-header>{{item.id}}. {{item.titulo}}</v-expansion-panel-header>
         <v-expansion-panel-content>
-          
           <v-card class="mx-auto" outlined>
             <v-list-item three-line>
               <v-list-item-content>
@@ -14,18 +12,14 @@
                     <template v-slot:default>
                       <thead>
                         <tr>
-                          <th class="text-left">
-                            Tareas
-                          </th>
+                          <th class="text-left">Tareas</th>
+                          <th class="text-left">Borrar</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="tar in item.tareas"
-                        :key="tar.tareas"
-                        
-                        >
+                        <tr v-for="tar in item.tareas" :key="tar.tareas">
                           <td>{{tar.tareas}}</td>
-                          
+                          <td></td>
                         </tr>
                       </tbody>
                     </template>
@@ -36,34 +30,15 @@
 
                       <v-select
                         v-model="form_tareas.id"
-                        :items= "item.id"
+                        :items= "items"
                         label="Seleccione el ID"
                         data-vv-name="select"
                         required
                       ></v-select>
-                    <!-- <v-btn
-                            color="primary"
-                            text
-                            @click="guardar(form_tareas)">
-                            Guardar
-                    </v-btn> -->
                     <v-btn color="succes" class="green white--text" text  @click="guardar(form_tareas)">Guardar</v-btn>
                     
                     </v-form>
               </v-list-item-content>
-
-              <v-list-item-avatar
-                tile
-                size="80"
-                >
-                <v-img
-                  lazy-src="https://picsum.photos/id/11/10/6"
-                  max-height="150"
-                  max-width="250"
-                  src="https://picsum.photos/id/11/500/300"
-                  >
-                </v-img>
-              </v-list-item-avatar>
             </v-list-item>
           </v-card>
         </v-expansion-panel-content>
@@ -83,6 +58,7 @@
         },
         arr:[],
         local:[],
+        items:[],
         sin_datos: "",
         tareas:[]
       }
@@ -110,8 +86,13 @@
         if(localStorage.form){
         this.local=JSON.parse(localStorage.getItem("form")) 
         //console.log(this.local[1].titulo)
-        console.log(this.local[0].tareas)
-        console.log()
+        //console.log(this.local[0].tareas)
+        //console.log()
+        console.log(this.local)
+          var total = this.local.length
+          for(var i=0; i < total; i++){
+            this.items.push(this.local[i].id)
+          }
         }
       }
     }
