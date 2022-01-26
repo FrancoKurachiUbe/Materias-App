@@ -168,6 +168,9 @@
         if(form_notas.nota > 10){
           this.errNota.push('La Nota debe ser entre 0 y 10')
         }
+        if(form_notas.nota == null){
+          this.errNota.push('Debe ingresar una nota')
+        }
         if(this.errNota.length == 0){
           
           nota.push(form_notas)

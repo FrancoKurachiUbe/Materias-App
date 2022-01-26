@@ -1,9 +1,4 @@
 /* c:\xampp\htdocs\www\trabajos\VUE-Viutify(Materias)\materias-vue */
-/* 
-- General:
-    * Agregar Validacion de Tareas y de ingreso de materias.
-    
-*/
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
@@ -19,23 +14,17 @@ const routes = [
   {
     path: '/Ingresar-Materias',
     name: 'Ingresar-Materias',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Ingresar-Materias.vue')
+    component: () => import('../views/Ingresar-Materias.vue')
   },
   {
     path: '/Tareas',
     name: 'Tareas',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Tareas.vue')
+    component: () => import('../views/Tareas.vue')
   },
   {
     path: '/Ver-Materias',
     name: 'Ver-Materias',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Ver-Materias.vue')
+    component: () => import('../views/Ver-Materias.vue')
   }
 ]
 
@@ -44,6 +33,5 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
 
 export default router

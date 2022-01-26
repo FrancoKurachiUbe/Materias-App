@@ -7,7 +7,7 @@
         <p>Una App que te permite administrar tus materias</p>
       </v-col>
     </v-row>
-    <Bienvenido/>
+    <Parallax/>
     <Manual class="mt-10 pt-10 mb-7"/>
   </div>
 </template>
@@ -15,14 +15,14 @@
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@/components/HelloWorld.vue'
-import Bienvenido from '@/components/Bienvenido.vue'
+import Parallax from '@/components/Parallax.vue'
 import Manual from '@/components/Manual.vue'
 
 export default {
   name: 'Home',
   components: {
     //HelloWorld,
-    Bienvenido,
+    Parallax,
     Manual
   }
 }
