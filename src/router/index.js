@@ -1,6 +1,7 @@
 /* c:\xampp\htdocs\www\trabajos\VUE-Viutify(Materias)\materias-vue */
 /* 
 - General:
+    * Agregar Validacion de Tareas y de ingreso de materias.
     
 */
 import Vue from 'vue'

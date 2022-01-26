@@ -6,6 +6,7 @@
           <tr>
             <th class="text-center">ID</th>
             <th class="text-center">Materia</th>
+            <th class="text-center">Tareas</th>
             <th class="text-center">Notas</th>
             <th class="text-center">Promedio</th>
             <th class="text-center">Editar / Borrar</th>
@@ -15,6 +16,7 @@
           <tr v-for="item in local" :key="item.id">
             <td :class="item.color" class="text-center white--text">{{ item.id }}</td>
             <td  class="text-center text-capitalize">{{ item.titulo }}</td>
+            <td  class="text-center">{{item.tareas.length}}</td>
             <td   class="text-center">
               <span v-for="id in item.notas" :key="id.fecha">
                 <span>| {{id.nota}} </span>
@@ -105,7 +107,7 @@
                         ></v-select>
                       <v-text-field v-model="form_notas.nota" label="Ingrese una nota"  counter="10"></v-text-field>
                       <ul v-for="item in errNota" :key="item">
-                            <li class="text-danger">{{item}}</li>
+                            <li class="red--text mb-4">{{item}}</li>
                         </ul>
                       <v-btn color="succes" class="green white--text" text  @click="guardar(form_notas)">Guardar</v-btn>
                       </v-form>
@@ -164,7 +166,7 @@
       console.log(form_notas.nota)
       
         if(form_notas.nota > 10){
-          this.errNota.push('La Nota debe ser menor a 11')
+          this.errNota.push('La Nota debe ser entre 0 y 10')
         }
         if(this.errNota.length == 0){
           
